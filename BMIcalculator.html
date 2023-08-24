@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(36, 39, 39);
+        }
+       #div1,#div2{
+        background-color: rgb(179, 183, 183);
+       
+       }
+      #div3{
+        background-color: none;
+        color: antiquewhite;
+      }
+      
+      #btn2{
+        border: none;
+        background-color: rgb(179, 183, 183);
+        color:blue;
+
+      }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <center>
+        <h1> BMI </h1>
+        <lable for="txt1">Height : </lable>
+    <input type="text" id="txt1" placeholder="meters">
+    <label for="txt2">Weight</label>
+    <input type="text" id="txt2" placeholder="kilograms">
+    <br><br>
+    <button id="btn">BMI</button>
+    <br><br>
+</center>
+<p>if want conversion from feets to meters?
+    <button id="btn2">click me!</button>
+</p>
+    </div>
+
+
+<br>
+<div id="div3"><strong>BMI = </strong></div>
+<div id="div2">
+    <center>
+       <h1>BMI Chart</h1> 
+        <table cellspacing="50">
+          <tr>
+            <th>BMI</th>
+            <th>Status</th>
+          </tr>  
+          <tr>
+            <td><=18.4</td>
+            <td style="background-color: #DAF7A6 ;">Underweight</td>
+          </tr> 
+          <tr>
+            <td>18.5-24.9</td>
+            <td style="background-color: green;">Normal</td>
+          </tr> 
+          <tr>
+            <td>25.0-29.9</td>
+            <td style="background-color: #FFC300;">Overweight</td>
+          </tr> 
+          <tr>
+            <td>>=30.0</td>
+            <td style="background-color: red;">Obese</td>
+          </tr> 
+        </table>
+    </center>
+</div>
+    <script>
+var a=document.querySelector("#txt1");
+var b=document.querySelector("#txt2");
+var btn=document.querySelector("#btn");
+document.querySelector('#btn2').addEventListener("click",()=>{
+    let convert=0.3048*prompt("convert height (feets to meters)");
+alert(convert);
+})
+
+btn.addEventListener("click",bmi);
+function bmi(){
+    let h=a.value;
+    let w=b.value;
+    let ans=(w/(h*h));
+    
+    if(h==null||h==''&& w==''||w==null){
+        alert("filled the given parameters");
+    }
+    else{
+    if(ans<=18.4){
+    document.querySelector('#div3').innerHTML=`<center><strong style="color:black">${ans} Underweight</strong><center>`;
+        document.body.style.backgroundColor = '#DAF7A6 ';
+    }
+        else if(ans>=18.5&&ans<=24.9){
+    document.querySelector('#div3').innerHTML=`<center><strong>${ans} Normal<strong></center>`;
+    document.body.style.backgroundColor = 'green';
+    }
+        else if(ans>=25.0&&ans<=29.9){
+            console.log("hi");
+    document.querySelector('#div3').innerHTML=`<center><strong> ${ans} Overweight</strong></center>`;
+        document.body.style.backgroundColor = '#FFC300';
+    }	
+        else{
+            console.log("hi");
+        document.querySelector('#div3').innerHTML=`<center><strong style="background-color:red">${ans} Obese</strong></center>`;
+        document.body.style.backgroundColor = 'red';
+        } 
+}
+    
+}
+    </script>
+</body>
+</html>
